@@ -31,9 +31,9 @@ class ExtractKeywords
 
 	function __construct()
 	{
-		$this->post_content_1 = '../post1.md';
-		$this->post_content_2 = '../post2.md';
-		$this->stopwords = '../stopwords.txt';
+		$this->post_content_1 = "../post1.md";
+		$this->post_content_2 = "../post2.md";
+		$this->stopwords = "../stopwords.txt";
 		$this->words_set = array();
 		$this->words_set_1 = array();
 		$this->stopwords_set = array();
@@ -63,13 +63,13 @@ class ExtractKeywords
 
 			foreach ($titles as $key => $value)
 			{
-				$value = strtolower(str_replace('#', '', $value));
+				$value = strtolower(str_replace("#", "", $value));
 				$contentset_words[] = preg_split('/[\s]+/', $value, -1, PREG_SPLIT_NO_EMPTY);
 			}
 		}
 		else
 		{
-			$contentset_words = preg_split('/[\s]+/', strtolower($file_contentset), -1, PREG_SPLIT_NO_EMPTY);
+			$contentset_words = preg_split("/[\s]+/", strtolower($file_contentset), -1, PREG_SPLIT_NO_EMPTY);
 		}
 		
 
@@ -82,7 +82,7 @@ class ExtractKeywords
 	 * 
 	 * @author   Renjith VR
 	 * @access   public 
-	 * @param    boolean
+	 * @param    boolean, boolean
 	 * @return   array
 	 */
 
@@ -135,7 +135,7 @@ class ExtractKeywords
 					$title_words[] = $val; 
 				}
 			}
-			
+
 			foreach ($this->words_set as $wkey => $wvalue)
 			{
 				if(in_array($wvalue, $title_words))
@@ -151,11 +151,9 @@ class ExtractKeywords
 			}
 		}
 
-
 		$this->top_words_set = array_slice($count_values, 0, 10);
 		return $this->top_words_set;
 
-		
 	}
 
 	
@@ -167,7 +165,7 @@ class ExtractKeywords
 //extract stopwords only
 $stopwords = TRUE;
 
-//count title words with double
+//count title words with double value
 $titlewords = TRUE;
 
 $extractWordsObject = new ExtractKeywords();
