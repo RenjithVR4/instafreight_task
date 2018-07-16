@@ -15,6 +15,8 @@
 * For SEO, it would conisder UPPERCASE, Propercase, CamelCase and lowercase words are same.
 */
 
+header('Content-type: text/plain; charset=ISO-8859-1');
+
 class ExtractKeywords
 {
 	private $post_content_1;
@@ -97,23 +99,6 @@ class ExtractKeywords
 		}
 
 
-		$this->title_words_set = $this->getwords_fromfile($this->post_content_1, TRUE);
-		$this->title_set_1 = $this->getwords_fromfile($this->post_content_2, TRUE);
-
-		foreach ($this->title_set_1 as $key => $value)
-		{
-			$this->title_words_set[] = $value;
-		}
-
-		foreach ($this->title_words_set as $key => $value)
-		{
-			foreach($value as $k => $val)
-			{
-				$title_words[] = $val; 
-			}
-		}
-
-
 		if($stopwords)
 		{
 			foreach ($this->words_set as $wkey => $wvalue)
@@ -135,6 +120,22 @@ class ExtractKeywords
 
 		if($titlewords)
 		{
+			$this->title_words_set = $this->getwords_fromfile($this->post_content_1, TRUE);
+			$this->title_set_1 = $this->getwords_fromfile($this->post_content_2, TRUE);
+
+			foreach ($this->title_set_1 as $key => $value)
+			{
+				$this->title_words_set[] = $value;
+			}
+
+			foreach ($this->title_words_set as $key => $value)
+			{
+				foreach($value as $k => $val)
+				{
+					$title_words[] = $val; 
+				}
+			}
+			
 			foreach ($this->words_set as $wkey => $wvalue)
 			{
 				if(in_array($wvalue, $title_words))
@@ -160,9 +161,17 @@ class ExtractKeywords
 	
 }
 
+//Extract the top 10 most used words. 
+//Always work with German Alphabets.
 
-$words = new ExtractKeywords();
-$e_words = $words->extract_top_used_words(TRUE, TRUE);
+//extract stopwords only
+$stopwords = TRUE;
 
-print_r($e_words);
+//count title words with double
+$titlewords = TRUE;
+
+$extractWordsObject = new ExtractKeywords();
+$extract_words = $extractWordsObject->extract_top_used_words($stopwords, $titlewords);
+
+print_r($extract_words);
  ?>
