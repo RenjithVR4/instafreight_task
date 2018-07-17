@@ -4,7 +4,7 @@ Please open the folder solutions for question 2 and question 3. I used lib folde
 
 ## Question 1 - Route decoder (AKA JS port)
 
-I have used [ord()](http://php.net/manual/en/function.ord.php) for charCodeAt(). I did not follow the coding standard what I used for other questions.
+I have used [ord()](http://php.net/manual/en/function.ord.php) for Javascript function - charCodeAt() . I did not follow the coding standard what I used for other questions.
 
 ## Question 2 - r/UpliftingNews consumer 
 I used CURL to fetch data from the API.
