@@ -13,7 +13,7 @@ We want to display news on the front page for our customers... We want to displa
 
 ### 1. What further improvements would you implement?
 
-To get good news our customers I prefer to apply [Sentiment Analysis](https://en.wikipedia.org/wiki/Sentiment_analysis). I had a plan to make an electron application for Ubuntu. It was a new reader application. It will daily fetch the news from different resources. There would be text-speech to read the news. So there was an option to read the only good news. I have started learning Electron, but due to the office work, I didn't get time to implement it. So for grabbing good news, I wanted to use sentiment analysis.
+To get good news our customers I prefer to apply [Sentiment Analysis](https://en.wikipedia.org/wiki/Sentiment_analysis). I had a plan to make an electron application for Ubuntu. It was a news reader application. It will daily fetch the news from different resources. There would be text-speech API to read the news. So there was an option to read the only good news. I have started learning Electron, but due to the office work, I didn't get time to implement it. So for grabbing good news, I wanted to use sentiment analysis.
 Sentiment analysis seeks to solve this problem by using natural language processing to recognize keywords within a document and thus classify the emotional status of the piece.
 
 [http://www.memetracker.org](http://www.memetracker.org) is used Sentiment Analysis.
