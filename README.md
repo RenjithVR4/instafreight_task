@@ -1,6 +1,6 @@
 # instafreight_task
 
-Please open the folder solutions for question 2 and question 3. I used lib folder for question 2.
+Please open the folder [solution](https://github.com/RenjithVR4/instafreight_task/tree/master/solution) for question 2 and question 3. I used lib folder for question 2.
 
 ## Question 1 - Route decoder (AKA JS port)
 
