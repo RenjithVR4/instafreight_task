@@ -72,14 +72,69 @@ class RouteDecoder
   public function decode($encodedRoute)
   {
     // @TODO port decodeRoute from Javascript
+
+    $len = strlen($encodedRoute);
+    $stringset = str_split($encodedRoute);
+    $index = 0;
+    $array = array();
+    $lat = 0;
+    $lng = 0;
+    $ele = 0;
+
+    while ($index < $len)
+    {
+      $b = null;
+
+      $shift = 0;
+      $result = 0;
+
+      do
+      {
+        $b = ord($stringset[$index++]) - 63;
+        $result |= ($b & 0x1f) << $shift;
+        $shift += 5;
+      }
+      while ($b >= 0x20);
+    
+    
+      $deltaLat = ($result & 1) ? ~$result >> 1 : $result >> 1;
+      $lat += $deltaLat;
+
+
+      $shift = 0;
+      $result = 0;
+
+      do
+      {
+        $b = ord($stringset[$index++]) - 63;
+        $result |= ($b & 0x1f) << $shift;
+        $shift += 5;
+      }
+      while ($b >= 0x20);
+
+      $deltaLon = ($result & 1) ? ~$result >> 1 : $result >> 1;
+      $lng += $deltaLon;
+
+      $array[] =  array($lng * 1e-5, $lat * 1e-5);
+    
+
+    }
+
+    return $array;
+
   }
 }
 
 $routeDecoder = new RouteDecoder();
-$points = $routeDecoder->decode('mkk_Ieg_qAiPePsHd[}CzMq@`CaAfCwCvLyApG[xBKZyCpPaDjQ');
+$pointset = $routeDecoder->decode('mkk_Ieg_qAiPePsHd[}CzMq@`CaAfCwCvLyApG[xBKZyCpPaDjQ');
 
-echo 'Route has ', sizeof($points), ' points', PHP_EOL;
+echo 'Route has ', sizeof($pointset), ' points', PHP_EOL;
 
-foreach ($points as $point) {
-  echo $point, PHP_EOL;
+foreach ($pointset as $points)
+{
+  foreach($points as $point)
+  {
+    echo $point, PHP_EOL;
+  }
+  
 }
